@@ -1,5 +1,6 @@
 package com.dwarves.todoist.controller;
 
+import com.dwarves.todoist.Utils.Constant;
 import com.dwarves.todoist.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,8 @@ public class TaskController {
     @PostMapping
     public ResponseEntity<?> assignUsers(@RequestBody @NonNull Map<String, Object> json) {
         try {
-            taskService.assignUsers((List<Integer>) json.get("userId_list"),
-                    (int) json.get("todoId"));
+            taskService.assignUsers((List<Integer>) json.get(Constant.USERID_LIST),
+                    (int) json.get(Constant.TODOID));
         } catch(ClassCastException e) {
             return ResponseEntity.badRequest().build();
             }
@@ -37,7 +38,7 @@ public class TaskController {
 
     @PostMapping(path = "/done")
     public ResponseEntity<?> completeTodo(@RequestBody @NonNull Map<String, Object> json) {
-        taskService.completeTodo((int) json.get("userId"), (int) json.get("todoId"));
+        taskService.completeTodo((int) json.get(Constant.USERID), (int) json.get("todoId"));
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 }

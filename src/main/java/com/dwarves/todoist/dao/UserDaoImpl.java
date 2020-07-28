@@ -1,6 +1,6 @@
 package com.dwarves.todoist.dao;
 
-import com.dwarves.todoist.model.Todo;
+import com.dwarves.todoist.Utils.Constant;
 import com.dwarves.todoist.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -20,8 +20,8 @@ public class UserDaoImpl implements UserDao {
     public List<User> getAllUsers() {
         final String sql = "SELECT * FROM user_table";
         return jdbcTemplate.query(sql, ((resultSet, i) -> new User(
-                resultSet.getInt("userId"),
-                resultSet.getString("username")
+                resultSet.getInt(Constant.USERID),
+                resultSet.getString(Constant.USERNAME)
         )));
     }
 

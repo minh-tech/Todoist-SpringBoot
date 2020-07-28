@@ -1,5 +1,7 @@
 package com.dwarves.todoist.dao;
 
+import com.dwarves.todoist.Utils.Constant;
+import com.dwarves.todoist.Utils.Utils;
 import com.dwarves.todoist.model.Todo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -20,16 +22,17 @@ public class TodoDaoImpl implements TodoDao{
     public List<Todo> getAllTodo() {
         final String sql = "SELECT * FROM todo_table";
         return jdbcTemplate.query(sql, ((resultSet, i) -> new Todo(
-                resultSet.getInt("todoId"),
-                resultSet.getString("content"),
-                resultSet.getDate("complete_date")
+                resultSet.getInt(Constant.TODOID),
+                resultSet.getString(Constant.CONTENT),
+                Utils.convertDateToString(resultSet.getDate(Constant.COMPLETE_DATE), Constant.PATTERN)
         )));
     }
 
     @Override
     public int insertTodo(Todo todo) {
         final String sql = "INSERT INTO todo_table (content, complete_date) VALUES (?, ?)";
-        return jdbcTemplate.update(sql, todo.getContent(), todo.getComplete_date());
+        Date date = Utils.convertStringToDate(todo.getComplete_date(), Constant.PATTERN);
+        return jdbcTemplate.update(sql, todo.getContent(), date);
     }
 
     @Override
@@ -41,10 +44,11 @@ public class TodoDaoImpl implements TodoDao{
     @Override
     public List<Todo> getTodoByDate(Date date) {
         final String sql = "SELECT * FROM todo_table WHERE complete_date = ?";
+
         return jdbcTemplate.query(sql, new Object[]{date}, ((resultSet, i) -> new Todo(
-                resultSet.getInt("todoId"),
-                resultSet.getString("content"),
-                resultSet.getDate("complete_date")
+                resultSet.getInt(Constant.TODOID),
+                resultSet.getString(Constant.CONTENT),
+                Utils.convertDateToString(resultSet.getDate(Constant.COMPLETE_DATE), Constant.PATTERN)
         )));
     }
 }

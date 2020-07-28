@@ -1,7 +1,5 @@
 package com.dwarves.todoist.dao;
 
-import com.dwarves.todoist.model.Todo;
-import com.dwarves.todoist.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

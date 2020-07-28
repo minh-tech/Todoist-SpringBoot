@@ -1,14 +1,19 @@
 package com.dwarves.todoist.model;
 
+import com.dwarves.todoist.Utils.Constant;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotNull;
 
 public class User {
 
     private final int userId;
+
+    @NotNull
     private String username;
 
-    public User(@JsonProperty("todoId") int userId,
-                @JsonProperty("username") String username) {
+    public User(@JsonProperty(Constant.USERID) int userId,
+                @JsonProperty(Constant.USERNAME) String username) {
         this.userId = userId;
         this.username = username;
     }

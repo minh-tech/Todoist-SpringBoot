@@ -1,19 +1,22 @@
 package com.dwarves.todoist.model;
 
+import com.dwarves.todoist.Utils.Constant;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.lang.NonNull;
-
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 public class Todo {
 
     private final int todoId;
-    private String content;
-    private Date complete_date;
 
-    public Todo(@JsonProperty("todoId") int todoId,
-                @JsonProperty("content") String content,
-                @JsonProperty("complete_date") Date complete_date) {
+    @NotNull
+    private String content;
+
+    @NotNull
+    private String complete_date;
+
+    public Todo(@JsonProperty(Constant.TODOID) int todoId,
+                @JsonProperty(Constant.CONTENT) String content,
+                @JsonProperty(Constant.COMPLETE_DATE) String complete_date) {
         this.todoId = todoId;
         this.content = content;
         this.complete_date = complete_date;
@@ -31,11 +34,11 @@ public class Todo {
         this.content = content;
     }
 
-    public Date getComplete_date() {
+    public String getComplete_date() {
         return complete_date;
     }
 
-    public void setComplete_date(Date complete_date) {
+    public void setComplete_date(String complete_date) {
         this.complete_date = complete_date;
     }
 }

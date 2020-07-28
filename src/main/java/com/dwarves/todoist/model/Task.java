@@ -1,15 +1,24 @@
 package com.dwarves.todoist.model;
 
+import com.dwarves.todoist.Utils.Constant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotNull;
+
 public class Task {
+
+    @NotNull
     private int todoId;
+
+    @NotNull
     private int userId;
+
+    @NotNull
     private boolean complete;
 
-    public Task(@JsonProperty("todoId") int todoId,
-                @JsonProperty("userId")int userId,
-                @JsonProperty("complete") boolean complete) {
+    public Task(@JsonProperty(Constant.TODOID) int todoId,
+                @JsonProperty(Constant.USERID)int userId,
+                @JsonProperty(Constant.COMPLETE) boolean complete) {
         this.todoId = todoId;
         this.userId = userId;
         this.complete = complete;
