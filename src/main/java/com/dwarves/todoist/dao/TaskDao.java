@@ -6,6 +6,6 @@ import com.dwarves.todoist.model.User;
 import java.util.List;
 
 public interface TaskDao {
-    int assignUsers(List<User> user_list, Todo todo);
-    int completeTodo(int userId, Todo todo);
+    int assignUsers(List<Integer> user_list, int todo);
+    int completeTodo(int todoId, int userId);
 }
