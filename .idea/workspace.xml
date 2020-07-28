@@ -29,13 +29,17 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="957d5b04-3ae1-4c40-ae7a-96001d688bd2" name="Default Changelist" comment="Update API get, create, edit, and group todo list">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/controller/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TaskService.java" afterDir="false" />
+    <list default="true" id="957d5b04-3ae1-4c40-ae7a-96001d688bd2" name="Default Changelist" comment="Update API assign users, done todo">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/UserDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TodoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TodoDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TodoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TodoService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +57,9 @@
   <component name="Git.Settings">
     <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/dwarves/todoist/controller/UserController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -120,7 +127,21 @@
       <option name="project" value="LOCAL" />
       <updated>1595951657687</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update API assign users, done todo">
+      <created>1595957570577</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595957570577</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update API assign users, done todo">
+      <created>1595957590035</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595957590035</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,41 +170,42 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update API get, create, edit, and group todo list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update API get, create, edit, and group todo list" />
+    <MESSAGE value="Update API assign users, done todo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update API assign users, done todo" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1595952144527">
+    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1595960759363">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1595952144527" />
+    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1595960759363" />
     <state x="651" y="263" width="666" height="580" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595888097123">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="651" y="263" width="666" height="580" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1595888097123" />
-    <state width="1807" height="214" key="GridCell.Tab.0.bottom" timestamp="1595957403237">
+    <state width="1807" height="213" key="GridCell.Tab.0.bottom" timestamp="1595962556730">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="214" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403237" />
-    <state width="1807" height="214" key="GridCell.Tab.0.center" timestamp="1595957403232">
+    <state width="1807" height="213" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556730" />
+    <state width="1807" height="213" key="GridCell.Tab.0.center" timestamp="1595962556726">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="214" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403232" />
-    <state width="1807" height="214" key="GridCell.Tab.0.left" timestamp="1595957403228">
+    <state width="1807" height="213" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556726" />
+    <state width="1807" height="213" key="GridCell.Tab.0.left" timestamp="1595962556724">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="214" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403228" />
-    <state width="1807" height="214" key="GridCell.Tab.0.right" timestamp="1595957403235">
+    <state width="1807" height="213" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556724" />
+    <state width="1807" height="213" key="GridCell.Tab.0.right" timestamp="1595962556729">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="214" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403235" />
+    <state width="1807" height="213" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556729" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1595951916838">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1595951916838" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1595951927318">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1595957628493">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1595951927318" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1595957628493" />
     <state x="753" y="341" width="471" height="423" key="git4idea.merge.GitPullDialog" timestamp="1595907311281">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

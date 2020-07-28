@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("TaskDao")
+@Repository
 public class TaskDaoImpl implements TaskDao {
 
     private final JdbcTemplate jdbcTemplate;

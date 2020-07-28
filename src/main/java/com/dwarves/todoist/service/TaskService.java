@@ -15,7 +15,7 @@ public class TaskService {
     private final TaskDao taskDao;
 
     @Autowired
-    public TaskService(@Qualifier("TaskDao") TaskDao taskDao) {
+    public TaskService(TaskDao taskDao) {
         this.taskDao = taskDao;
     }
 

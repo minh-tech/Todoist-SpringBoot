@@ -7,7 +7,9 @@ public class User {
     int userId;
     String username;
 
-    public User(@JsonProperty("username") String username) {
+    public User(@JsonProperty("todoId") int userId,
+                @JsonProperty("username") String username) {
+        this.userId = userId;
         this.username = username;
     }
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
-@Repository("Postgres")
+@Repository
 public class TodoDaoImpl implements TodoDao{
 
     private final JdbcTemplate jdbcTemplate;
