@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="957d5b04-3ae1-4c40-ae7a-96001d688bd2" name="Default Changelist" comment="" />
+    <list default="true" id="957d5b04-3ae1-4c40-ae7a-96001d688bd2" name="Default Changelist" comment="Update API get, create, edit, and group todo list">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/controller/TaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDao.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +51,15 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/.m2/wrapper/dists/apache-maven-3.6.3-bin/1iopthnavndlasol9gbrbg6bf2/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1fHOuohd1TKNfux9dZ9jprWmn7K" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -41,7 +70,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -57,7 +87,7 @@
       <module name="todoist" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.dwarves.todoist.*" />
+          <option name="PATTERN" value="com.dwarves.todoist.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,6 +101,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -82,6 +113,14 @@
       <option name="presentableId" value="Default" />
       <updated>1595871776122</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update API get, create, edit, and group todo list">
+      <created>1595951657687</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1595951657687</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -89,37 +128,62 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update API get, create, edit, and group todo list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update API get, create, edit, and group todo list" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1595891745747">
+    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1595952144527">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1595891745747" />
+    <state x="801" y="239" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1595952144527" />
     <state x="651" y="263" width="666" height="580" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595888097123">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="651" y="263" width="666" height="580" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1595888097123" />
-    <state width="1807" height="216" key="GridCell.Tab.0.bottom" timestamp="1595907478280">
+    <state width="1807" height="214" key="GridCell.Tab.0.bottom" timestamp="1595957403237">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="216" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595907478280" />
-    <state width="1807" height="216" key="GridCell.Tab.0.center" timestamp="1595907478278">
+    <state width="1807" height="214" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403237" />
+    <state width="1807" height="214" key="GridCell.Tab.0.center" timestamp="1595957403232">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="216" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595907478278" />
-    <state width="1807" height="216" key="GridCell.Tab.0.left" timestamp="1595907478277">
+    <state width="1807" height="214" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403232" />
+    <state width="1807" height="214" key="GridCell.Tab.0.left" timestamp="1595957403228">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="216" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595907478277" />
-    <state width="1807" height="216" key="GridCell.Tab.0.right" timestamp="1595907478280">
+    <state width="1807" height="214" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403228" />
+    <state width="1807" height="214" key="GridCell.Tab.0.right" timestamp="1595957403235">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="216" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595907478280" />
+    <state width="1807" height="214" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595957403235" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1595951916838">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1595951916838" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1595951927318">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1595951927318" />
     <state x="753" y="341" width="471" height="423" key="git4idea.merge.GitPullDialog" timestamp="1595907311281">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
