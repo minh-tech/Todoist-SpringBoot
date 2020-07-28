@@ -3,7 +3,6 @@ package com.dwarves.todoist.service;
 import com.dwarves.todoist.dao.TodoDao;
 import com.dwarves.todoist.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

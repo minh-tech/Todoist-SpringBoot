@@ -1,12 +1,13 @@
 package com.dwarves.todoist.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.NonNull;
 
 import java.util.Date;
 
 public class Todo {
 
-    private int todoId;
+    private final int todoId;
     private String content;
     private Date complete_date;
 

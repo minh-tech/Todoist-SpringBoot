@@ -1,10 +1,9 @@
 package com.dwarves.todoist.controller;
 
-import com.dwarves.todoist.model.Todo;
-import com.dwarves.todoist.model.User;
 import com.dwarves.todoist.service.TaskService;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,13 +23,21 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    @SuppressWarnings("unchecked")
     @PostMapping
-    public void assignUsers(@RequestBody @NonNull Map<String, Object> json) {
-        taskService.assignUsers((List<Integer>) json.get("userId_list"), (int) json.get("todoId"));
+    public ResponseEntity<?> assignUsers(@RequestBody @NonNull Map<String, Object> json) {
+        try {
+            taskService.assignUsers((List<Integer>) json.get("userId_list"),
+                    (int) json.get("todoId"));
+        } catch(ClassCastException e) {
+            return ResponseEntity.badRequest().build();
+            }
+        return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 
     @PostMapping(path = "/done")
-    public void completeTodo(@RequestBody @NonNull Map<String, Object> json) {
+    public ResponseEntity<?> completeTodo(@RequestBody @NonNull Map<String, Object> json) {
         taskService.completeTodo((int) json.get("userId"), (int) json.get("todoId"));
+        return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 }

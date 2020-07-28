@@ -2,7 +2,6 @@ package com.dwarves.todoist.service;
 
 import com.dwarves.todoist.dao.UserDao;
 import com.dwarves.todoist.model.User;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

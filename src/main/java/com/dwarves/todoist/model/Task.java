@@ -3,9 +3,9 @@ package com.dwarves.todoist.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Task {
-    int todoId;
-    int userId;
-    boolean complete;
+    private int todoId;
+    private int userId;
+    private boolean complete;
 
     public Task(@JsonProperty("todoId") int todoId,
                 @JsonProperty("userId")int userId,

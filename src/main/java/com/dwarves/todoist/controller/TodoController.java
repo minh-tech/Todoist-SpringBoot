@@ -3,6 +3,8 @@ package com.dwarves.todoist.controller;
 import com.dwarves.todoist.model.Todo;
 import com.dwarves.todoist.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,29 +24,31 @@ public class TodoController {
     }
 
     @GetMapping
-    public List<Todo> getAllTodo() {
-        return todoService.getAllTodo();
+    public ResponseEntity<?> getAllTodo() {
+        return ResponseEntity.ok(todoService.getAllTodo());
     }
 
-    @PostMapping
-    public void insertTodo(@NonNull @RequestBody Todo todo) {
+    @PostMapping(path = "/create")
+    public ResponseEntity<?> insertTodo(@NonNull @RequestBody Todo todo) {
+        System.out.println(todo.getComplete_date());
         todoService.insertTodo(todo);
+        return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
     @PostMapping(path = "/update")
-    public void updateTodoById(@NonNull @RequestBody Todo todo) {
+    public ResponseEntity<?> updateTodoById(@NonNull @RequestBody Todo todo) {
         todoService.updateTodoById(todo);
+        return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 
     @GetMapping(path = "/{date}")
-    public List<Todo> getTodoByDate(@PathVariable("date")String str_date) {
-        System.out.println(str_date);
+    public ResponseEntity<?> getTodoByDate(@PathVariable("date")String str_date) {
         Date date = null;
         try {
             date = new SimpleDateFormat("yyyy-MM-dd").parse(str_date);
         } catch (ParseException e) {
-            return null;
+            return ResponseEntity.badRequest().build();
         }
-        return todoService.getTodoByDate(date);
+        return ResponseEntity.ok(todoService.getTodoByDate(date));
     }
 }

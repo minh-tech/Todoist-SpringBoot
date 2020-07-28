@@ -3,6 +3,8 @@ package com.dwarves.todoist.controller;
 import com.dwarves.todoist.model.User;
 import com.dwarves.todoist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +22,13 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<?> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PostMapping(path = {"/add"})
-    public int addUser(@NonNull @RequestBody User user) {
-        return userService.addUser(user);
+    @PostMapping(path = {"/create"})
+    public ResponseEntity<?> addUser(@NonNull @RequestBody User user) {
+        userService.addUser(user);
+        return ResponseEntity.ok(HttpStatus.CREATED);
     }
 }

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
 
-    int userId;
-    String username;
+    private final int userId;
+    private String username;
 
     public User(@JsonProperty("todoId") int userId,
                 @JsonProperty("username") String username) {
