@@ -1,5 +1,6 @@
 package com.dwarves.todoist.dao;
 
+import com.dwarves.todoist.model.Task;
 import org.springframework.dao.DuplicateKeyException;
 
 import java.util.List;
@@ -22,4 +23,10 @@ public interface TaskDao {
      * @return
      */
     int doneTodo(int todoId, int userId);
+
+    /**
+     * Get a list of assignments
+     * @return
+     */
+    List<Task> getAllAssignments();
 }

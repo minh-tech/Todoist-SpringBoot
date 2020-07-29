@@ -1,5 +1,7 @@
 package com.dwarves.todoist.dao;
 
+import com.dwarves.todoist.Utils.Constant;
+import com.dwarves.todoist.model.Task;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,8 +27,8 @@ public class TaskDaoImpl implements TaskDao {
         jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
-                preparedStatement.setInt(1, userId_list.get(i));
-                preparedStatement.setInt(2, todoId);
+                preparedStatement.setInt(1, todoId);
+                preparedStatement.setInt(2, userId_list.get(i));
                 preparedStatement.setBoolean(3, false);
             }
             @Override
@@ -41,5 +43,15 @@ public class TaskDaoImpl implements TaskDao {
     public int doneTodo(int userId, int todoId) {
         final String sql = "UPDATE task_table SET complete = true WHERE \"todoId\" = ? AND \"userId\" = ?";
         return jdbcTemplate.update(sql, todoId, userId);
+    }
+
+    @Override
+    public List<Task> getAllAssignments() {
+        final String sql = "SELECT * FROM task_table";
+        return jdbcTemplate.query(sql, ((resultSet, i) -> new Task(
+                resultSet.getInt(Constant.TODOID),
+                resultSet.getInt(Constant.USERID),
+                resultSet.getBoolean(Constant.COMPLETE)
+        )));
     }
 }

@@ -1,6 +1,7 @@
 package com.dwarves.todoist.service;
 
 import com.dwarves.todoist.dao.TaskDao;
+import com.dwarves.todoist.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,13 @@ public class TaskService {
      */
     public int doneTodo(int userId, int todoId) {
         return taskDao.doneTodo(userId, todoId);
+    }
+
+    /**
+     * Get a list of assignments
+     * @return
+     */
+    public List<Task> getAllAssignments() {
+        return taskDao.getAllAssignments();
     }
 }

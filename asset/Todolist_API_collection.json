@@ -86,19 +86,59 @@
 			"response": []
 		},
 		{
+			"name": "Get a list of users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Assign multiple users into 1 todo",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userId_list\": [\n        1, 2\n    ],\n    \"todoId\": 1\n}",
+					"raw": "{\n    \"userId_list\": [\n        1, 2, 3\n    ],\n    \"todoId\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
+				"url": {
+					"raw": "http://localhost:8080/api/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a list of the assignments",
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
 					"raw": "http://localhost:8080/api/task",
 					"protocol": "http",
@@ -160,26 +200,6 @@
 						"api",
 						"todo",
 						"2020-07-28"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get a list of users",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"user"
 					]
 				}
 			},
