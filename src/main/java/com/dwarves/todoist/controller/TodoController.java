@@ -28,16 +28,25 @@ public class TodoController {
         return ResponseEntity.ok(todoService.getAllTodo());
     }
 
-    @PostMapping(path = "/create")
-    public ResponseEntity<?> insertTodo(@Valid @NonNull @RequestBody Todo todo) {
-        System.out.println(todo.getComplete_date());
-        todoService.insertTodo(todo);
+    @PostMapping(path = "/add")
+    public ResponseEntity<?> addTodo(@Valid @NonNull @RequestBody Todo todo) {
+
+        if (todoService.addTodo(todo) == 0) {
+            return ResponseEntity.noContent().build();
+        }
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
-    @PostMapping(path = "/update")
-    public ResponseEntity<?> updateTodoById(@NonNull @RequestBody Todo todo) {
-        todoService.updateTodoById(todo);
+    @PostMapping(path = "/edit")
+    public ResponseEntity<?> editTodoById(@Valid @NonNull @RequestBody Todo todo) {
+
+        if (!Utils.isIdValid(todo.getTodoId())) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        if (todoService.editTodoById(todo) == 0) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 

@@ -2,6 +2,7 @@ package com.dwarves.todoist.service;
 
 import com.dwarves.todoist.dao.TaskDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +17,11 @@ public class TaskService {
         this.taskDao = taskDao;
     }
 
-    public int assignUsers(List<Integer> userId_list, int todoId) {
+    public int assignUsers(List<Integer> userId_list, int todoId) throws DuplicateKeyException {
         return taskDao.assignUsers(userId_list, todoId);
     }
 
-    public int completeTodo(int userId, int todoId) {
-        return taskDao.completeTodo(userId, todoId);
+    public int doneTodo(int userId, int todoId) {
+        return taskDao.doneTodo(userId, todoId);
     }
 }

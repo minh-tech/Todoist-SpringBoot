@@ -29,16 +29,17 @@ public class TodoDaoImpl implements TodoDao{
     }
 
     @Override
-    public int insertTodo(Todo todo) {
+    public int addTodo(Todo todo) {
         final String sql = "INSERT INTO todo_table (content, complete_date) VALUES (?, ?)";
         Date date = Utils.convertStringToDate(todo.getComplete_date(), Constant.PATTERN);
         return jdbcTemplate.update(sql, todo.getContent(), date);
     }
 
     @Override
-    public int updateTodoById(Todo todo) {
+    public int editTodoById(Todo todo) {
         final String sql = "UPDATE todo_table SET content = ?, complete_date = ? WHERE \"todoId\" = ?";
-        return jdbcTemplate.update(sql, todo.getContent(), todo.getComplete_date(), todo.getTodoId());
+        Date date = Utils.convertStringToDate(todo.getComplete_date(), Constant.PATTERN);
+        return jdbcTemplate.update(sql, todo.getContent(), date, todo.getTodoId());
     }
 
     @Override
@@ -50,5 +51,13 @@ public class TodoDaoImpl implements TodoDao{
                 resultSet.getString(Constant.CONTENT),
                 Utils.convertDateToString(resultSet.getDate(Constant.COMPLETE_DATE), Constant.PATTERN)
         )));
+    }
+
+    @Override
+    public List<Integer> getAllTodoIds() {
+        final String sql = "SELECT \"todoId\" FROM todo_table ORDER BY \"todoId\" ASC";
+        return jdbcTemplate.query(sql, ((resultSet, i) ->
+                resultSet.getInt(Constant.TODOID)
+        ));
     }
 }

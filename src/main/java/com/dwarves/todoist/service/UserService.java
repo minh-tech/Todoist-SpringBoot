@@ -22,4 +22,8 @@ public class UserService {
     public int addUser(User user) {
         return userDao.addUser(user);
     }
+
+    public List<Integer> getAllUserIds() {
+        return userDao.getAllUserIds();
+    }
 }

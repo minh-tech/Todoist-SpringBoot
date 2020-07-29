@@ -22,15 +22,19 @@ public class TodoService {
         return todoDao.getAllTodo();
     }
 
-    public int insertTodo(Todo todo) {
-        return todoDao.insertTodo(todo);
+    public int addTodo(Todo todo) {
+        return todoDao.addTodo(todo);
     }
 
-    public int updateTodoById(Todo todo) {
-        return todoDao.updateTodoById(todo);
+    public int editTodoById(Todo todo) {
+        return todoDao.editTodoById(todo);
     }
 
     public List<Todo> getTodoByDate(Date date) {
         return todoDao.getTodoByDate(date);
+    }
+
+    public List<Integer> getAllTodoIds() {
+        return todoDao.getAllTodoIds();
     }
 }

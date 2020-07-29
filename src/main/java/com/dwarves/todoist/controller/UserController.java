@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequestMapping("api/user")
 @RestController
 public class UserController {
@@ -24,9 +26,12 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PostMapping(path = {"/create"})
-    public ResponseEntity<?> addUser(@NonNull @RequestBody User user) {
-        userService.addUser(user);
+    @PostMapping(path = {"/add"})
+    public ResponseEntity<?> addUser(@Valid @NonNull @RequestBody User user) {
+
+        if (userService.addUser(user) == 0) {
+            return ResponseEntity.noContent().build();
+        }
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 }

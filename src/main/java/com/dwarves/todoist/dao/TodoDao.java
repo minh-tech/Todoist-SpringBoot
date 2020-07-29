@@ -8,7 +8,8 @@ import java.util.List;
 public interface TodoDao {
 
     List<Todo> getAllTodo();
-    int insertTodo(Todo todo);
-    int updateTodoById(Todo todo);
+    int addTodo(Todo todo);
+    int editTodoById(Todo todo);
     List<Todo> getTodoByDate(Date date);
+    List<Integer> getAllTodoIds();
 }

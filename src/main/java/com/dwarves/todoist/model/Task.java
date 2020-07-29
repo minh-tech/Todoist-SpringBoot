@@ -3,14 +3,17 @@ package com.dwarves.todoist.model;
 import com.dwarves.todoist.Utils.Constant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class Task {
 
     @NotNull
+    @Min(value = 1)
     private int todoId;
 
     @NotNull
+    @Min(value = 1)
     private int userId;
 
     @NotNull

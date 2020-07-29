@@ -30,4 +30,12 @@ public class UserDaoImpl implements UserDao {
         final String sql = "INSERT INTO user_table (username) VALUES (?)";
         return jdbcTemplate.update(sql, user.getUsername());
     }
+
+    @Override
+    public List<Integer> getAllUserIds() {
+        final String sql = "SELECT \"userId\" FROM user_table ORDER BY \"userId\" ASC";
+        return jdbcTemplate.query(sql, ((resultSet, i) ->
+                resultSet.getInt(Constant.USERID)
+        ));
+    }
 }
