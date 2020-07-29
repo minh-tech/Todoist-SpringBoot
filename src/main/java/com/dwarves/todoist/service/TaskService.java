@@ -17,10 +17,23 @@ public class TaskService {
         this.taskDao = taskDao;
     }
 
+    /**
+     * Assign multiple users into one todo
+     * @param userId_list
+     * @param todoId
+     * @return
+     * @throws DuplicateKeyException
+     */
     public int assignUsers(List<Integer> userId_list, int todoId) throws DuplicateKeyException {
         return taskDao.assignUsers(userId_list, todoId);
     }
 
+    /**
+     * Complete a todo
+     * @param userId
+     * @param todoId
+     * @return
+     */
     public int doneTodo(int userId, int todoId) {
         return taskDao.doneTodo(userId, todoId);
     }

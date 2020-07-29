@@ -34,33 +34,40 @@ public class TaskController {
     @SuppressWarnings("unchecked")
     @PostMapping
     public ResponseEntity<?> assignUsers(@NonNull @RequestBody Map<String, Object> json) {
-        List<Integer> userIdList;
-        int todoId = (int) json.get(Constant.TODOID);
+        List<Integer> userIdsJson;
+        int todoIdJson = 0;
+
         try {
-            userIdList = (List<Integer>) json.get(Constant.USERID_LIST);
+            userIdsJson = (List<Integer>) json.get(Constant.USERID_LIST);
+            todoIdJson = (int) json.get(Constant.TODOID);
 
-            if (!userIdList.stream().allMatch(Utils::isIdValid)) {
-                return ResponseEntity.badRequest().build();
+            // Check a todoID is valid
+            if (!Utils.isIdValid(todoIdJson)) {
+                return ResponseEntity.badRequest().body(Constant.TODO_INVALID);
             }
 
-            List<Integer> todoIds = todoService.getAllTodoIds();
-            if (!Utils.isIdExisted(todoIds, todoId)) {
-                return ResponseEntity.badRequest().build();
+            // Check a todoID exists in database
+            List<Integer> todoIdsDatabase = todoService.getAllTodoIds();
+            if (!Utils.isIdExisted(todoIdsDatabase, todoIdJson)) {
+                return ResponseEntity.badRequest().body(Constant.TODO_NOT_EXIST);
             }
 
-            List<Integer> userIds = userService.getAllUserIds();
-            if (!userIdList.stream().allMatch(id -> Utils.isIdExisted(userIds, id))) {
-                return ResponseEntity.badRequest().build();
+            // Check userIDs is valid
+            if (!userIdsJson.stream().allMatch(Utils::isIdValid)) {
+                return ResponseEntity.badRequest().body(Constant.USERIDS_INVALID);
             }
-//            for (int id : userIdList) {
-//                if (!Utils.isIdExisted(userIds, id)) {
-//                    return ResponseEntity.badRequest().build();
-//                }
-//            }
 
-            taskService.assignUsers(userIdList, todoId);
-        } catch(ClassCastException | DuplicateKeyException e) {
-            return ResponseEntity.badRequest().build();
+            // Check userIDs exist in database
+            List<Integer> userIdsDatabase = userService.getAllUserIds();
+            if (!userIdsJson.stream().allMatch(id -> Utils.isIdExisted(userIdsDatabase, id))) {
+                return ResponseEntity.badRequest().body(Constant.USERS_NOT_EXIST);
+            }
+
+            taskService.assignUsers(userIdsJson, todoIdJson);
+        } catch(ClassCastException | NullPointerException e) {
+            return ResponseEntity.badRequest().body(Constant.JSON_INCORRECT);
+        } catch(DuplicateKeyException e) {
+            return ResponseEntity.badRequest().body(Constant.ASSIGNMENT_DUPLICATED);
         }
 
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
@@ -68,21 +75,40 @@ public class TaskController {
 
     @PostMapping(path = "/done")
     public ResponseEntity<?> doneTodo(@NonNull @RequestBody Map<String, Object> json) {
-        int userId = (int) json.get(Constant.USERID);
-        int todoId = (int) json.get(Constant.TODOID);
+        int userIdJson = 0;
+        int todoIdJson = 0;
 
-        List<Integer> todoIds = todoService.getAllTodoIds();
-        if (!Utils.isIdExisted(todoIds, todoId)) {
-            return ResponseEntity.badRequest().build();
+        try {
+            userIdJson = (int) json.get(Constant.USERID);
+            todoIdJson = (int) json.get(Constant.TODOID);
+        } catch (NullPointerException e) {
+            return ResponseEntity.badRequest().body(Constant.JSON_INCORRECT);
         }
 
-        List<Integer> userIds = userService.getAllUserIds();
-        if (!Utils.isIdExisted(userIds, userId)) {
-            return ResponseEntity.badRequest().build();
+        // Check a userID is valid
+        if (!Utils.isIdValid(userIdJson)) {
+            return ResponseEntity.badRequest().body(Constant.USER_INVALID);
         }
 
-        if (taskService.doneTodo(userId, todoId) == 0) {
-            return ResponseEntity.notFound().build();
+        // Check a userID exists in database
+        List<Integer> userIdsDatabase = userService.getAllUserIds();
+        if (!Utils.isIdExisted(userIdsDatabase, userIdJson)) {
+            return ResponseEntity.badRequest().body(Constant.USER_NOT_EXIST);
+        }
+
+        // Check a todoID is valid
+        if (!Utils.isIdValid(todoIdJson)) {
+            return ResponseEntity.badRequest().body(Constant.TODO_INVALID);
+        }
+
+        // Check a todoID exists in database
+        List<Integer> todoIdsDatabase = todoService.getAllTodoIds();
+        if (!Utils.isIdExisted(todoIdsDatabase, todoIdJson)) {
+            return ResponseEntity.badRequest().body(Constant.TODO_NOT_EXIST);
+        }
+
+        if (taskService.doneTodo(userIdJson, todoIdJson) == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.ASSIGNMENT_NOT_FOUND);
         }
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }

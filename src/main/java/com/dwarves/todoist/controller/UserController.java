@@ -29,9 +29,7 @@ public class UserController {
     @PostMapping(path = {"/add"})
     public ResponseEntity<?> addUser(@Valid @NonNull @RequestBody User user) {
 
-        if (userService.addUser(user) == 0) {
-            return ResponseEntity.noContent().build();
-        }
+        userService.addUser(user);
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 }

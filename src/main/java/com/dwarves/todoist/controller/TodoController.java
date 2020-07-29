@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @RequestMapping("api/todo")
 @RestController
@@ -31,22 +32,25 @@ public class TodoController {
     @PostMapping(path = "/add")
     public ResponseEntity<?> addTodo(@Valid @NonNull @RequestBody Todo todo) {
 
-        if (todoService.addTodo(todo) == 0) {
-            return ResponseEntity.noContent().build();
-        }
+        todoService.addTodo(todo);
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
     @PostMapping(path = "/edit")
     public ResponseEntity<?> editTodoById(@Valid @NonNull @RequestBody Todo todo) {
 
+        // Check a todoID is valid
         if (!Utils.isIdValid(todo.getTodoId())) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(Constant.TODO_INVALID);
         }
 
-        if (todoService.editTodoById(todo) == 0) {
-            return ResponseEntity.notFound().build();
+        // Check a todoID exist in database
+        List<Integer> todoIds = todoService.getAllTodoIds();
+        if (!Utils.isIdExisted(todoIds, todo.getTodoId())) {
+            return ResponseEntity.badRequest().body(Constant.TODO_NOT_EXIST);
         }
+
+        todoService.editTodoById(todo);
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 
@@ -54,8 +58,9 @@ public class TodoController {
     public ResponseEntity<?> getTodoByDate(@PathVariable("date")String dateStr) {
         Date date = Utils.convertStringToDate(dateStr, Constant.PATTERN);
 
+        // Check Date is valid
         if (date == null) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(Constant.DATE_INVALID);
         }
         return ResponseEntity.ok(todoService.getTodoByDate(date));
     }
