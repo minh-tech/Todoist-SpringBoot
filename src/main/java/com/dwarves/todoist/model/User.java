@@ -3,7 +3,6 @@ package com.dwarves.todoist.model;
 import com.dwarves.todoist.Utils.Constant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class User {

@@ -47,7 +47,7 @@ public class TodoController {
         // Check a todoID exist in database
         List<Integer> todoIds = todoService.getAllTodoIds();
         if (!Utils.isIdExisted(todoIds, todo.getTodoId())) {
-            return ResponseEntity.badRequest().body(Constant.TODO_NOT_EXIST);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.TODO_NOT_FOUND);
         }
 
         todoService.editTodoById(todo);
