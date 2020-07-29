@@ -1,9 +1,13 @@
 Todolist API
 
 IDE: IntelliJ IDEA
+
 Database: PostgreSQL
+
 Management tool: Maven
+
 ERD: asset/Todolist_ERD.jpg
+
 
 1. Run asset/sample.sql on PostgreSQL server
 2. Import asset/Todolist_API_collection.json into Postman
