@@ -1,6 +1,0 @@
-app:
-  datasource:
-    jdbc-url: jdbc:postgresql://localhost:5432/todoist
-    username: minh
-    password: 111111
-    pool-size: 30
