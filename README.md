@@ -8,15 +8,24 @@ Todolist API
 * jar: target/todoist-0.0.1-SNAPSHOT.jar
 
 
-1. Create "todoist" database and run asset/sample.sql on PostgreSQL server
-2. Run todoist-0.0.1-SNAPSHOT.jar by command:
+1. Setup database
+# Install PostgreSQL via Docker
+  $ sudo docker pull postgres:11
+# Remove the container dev-todoist (skip the first time)
+  $ sudo docker rm -f dev-todoist
+# Create the container dev-todoist
+  $ sudo docker run --name dev-todoist -p 5432:5432 -e POSTGRES_PASSWORD=111111 -d postgres:11
+# CREATE db todoist
+  $ sudo docker exec dev-todoist psql -U postgres -c"CREATE DATABASE todoist" postgres
 
-  $ java -jar target/todoist-0.0.1-SNAPSHOT.jar 
+2. Run Application
 
-3. Grant permission and run asset/Todoist_cUrl.sh
+# Run todoist-0.0.1-SNAPSHOT.jar:
+$ java -jar target/todoist-0.0.1-SNAPSHOT.jar 
 
-  $ chmod +x asset/Todoist_cUrl.sh
-  $ ./asset/Todoist_cUrl.sh 
+# Grant permission and run asset/Todoist_cUrl.sh
+$ chmod +x asset/Todoist_cUrl.sh
+$ ./asset/Todoist_cUrl.sh 
 
 
 API:
