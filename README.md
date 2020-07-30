@@ -1,14 +1,14 @@
-Todolist API
+# Todolist API
 
-* IDE: IntelliJ IDEA
-* Database: PostgreSQL
-* Management tool: Maven
-* ERD: asset/Todolist_ERD.jpg
-* cUrl: asset/Todoist_cUrl.sh
-* jar: target/todoist-0.0.1-SNAPSHOT.jar
+* Framework : Spring Boot
+* Database  : PostgreSQL
+* ERD       : asset/Todolist_ERD.jpg
+* cUrl      : asset/Todoist_cUrl.sh
+* jar       : target/todoist-0.0.1-SNAPSHOT.jar
 
 
-1. Setup database
+1. Setup database via Docker
+~~~~
 # Install PostgreSQL via Docker
   $ sudo docker pull postgres:11
 # Remove the container dev-todoist (skip the first time)
@@ -17,16 +17,16 @@ Todolist API
   $ sudo docker run --name dev-todoist -p 5432:5432 -e POSTGRES_PASSWORD=111111 -d postgres:11
 # CREATE db todoist
   $ sudo docker exec dev-todoist psql -U postgres -c"CREATE DATABASE todoist" postgres
-
+~~~~
 2. Run Application
-
+~~~~
 # Run todoist-0.0.1-SNAPSHOT.jar:
 $ java -jar target/todoist-0.0.1-SNAPSHOT.jar 
 
 # Grant permission and run asset/Todoist_cUrl.sh
 $ chmod +x asset/Todoist_cUrl.sh
 $ ./asset/Todoist_cUrl.sh 
-
+~~~~
 
 API:
 1. Get a list of todos
