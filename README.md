@@ -4,14 +4,20 @@ Todolist API
 * Database: PostgreSQL
 * Management tool: Maven
 * ERD: asset/Todolist_ERD.jpg
+* cUrl: asset/Todoist_cUrl.sh
+* jar: target/todoist-0.0.1-SNAPSHOT.jar
 
 
-1. Run asset/sample.sql on PostgreSQL server
-2. Import asset/Todolist_API_collection.json into Postman
-3. Import the project into IntelliJ IDEA
-4. Reload pom.xml
-5. Change database, username, and password in resources/application.yml
-6. Run TodoistApplication and use Postman to test API
+1. Create "todoist" database and run asset/sample.sql on PostgreSQL server
+2. Run todoist-0.0.1-SNAPSHOT.jar by command:
+
+  $ java -jar target/todoist-0.0.1-SNAPSHOT.jar 
+
+3. Grant permission and run asset/Todoist_cUrl.sh
+
+  $ chmod +x asset/Todoist_cUrl.sh
+  $ ./asset/Todoist_cUrl.sh 
+
 
 API:
 1. Get a list of todos
