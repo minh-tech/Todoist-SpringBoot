@@ -69,6 +69,7 @@ API:
 - 404 Not Found + Message: "One of users not found."
 - 400 Bad Request + Message: "Json format is incorrect."
 - 400 Bad Request + Message: "Assignments are duplicated."
+- 200 OK
 
 8. Get a list of the assignments
 - Request HTTP GET: http://localhost:8080/api/task
