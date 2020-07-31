@@ -2,9 +2,11 @@
 
 * Framework : Spring Boot
 * Database  : PostgreSQL
-* ERD       : asset/Todolist_ERD.jpg
 * cUrl      : asset/Todoist_cUrl.sh
 * jar       : target/todoist-0.0.1-SNAPSHOT.jar
+* ERD       :
+
+![Alt](https://github.com/minh-tech/todoist/blob/master/asset/Todolist_ERD.jpg "Title")
 
 
 1. Setup database via Docker
