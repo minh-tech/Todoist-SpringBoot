@@ -1,4 +1,4 @@
-# Todolist API
+# Todoist API
 
 * Framework : Spring Boot
 * Database  : PostgreSQL
@@ -8,7 +8,7 @@
 
 ![Alt](https://github.com/minh-tech/todoist/blob/master/asset/Todolist_ERD.jpg "Title")
 
-
+## Installations
 1. Setup database via Docker
 ~~~~
 # Install PostgreSQL via Docker
@@ -30,7 +30,7 @@ $ chmod +x asset/Todoist_cUrl.sh
 $ ./asset/Todoist_cUrl.sh 
 ~~~~
 
-API:
+## HTTP API:
 1. Get a list of todos
 - Request HTTP GET: http://localhost:8080/api/todo
 - Response: 200 OK + JSON
