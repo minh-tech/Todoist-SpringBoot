@@ -27,9 +27,6 @@ public class TodoController {
 
     @GetMapping
     public ResponseEntity<?> getTodoList(@RequestParam Map<String, String> allParams) {
-        System.out.println("Parameters are " + allParams.entrySet());
-        System.out.println("Parameters are " + allParams.isEmpty());
-        System.out.println("Parameters are " + allParams.get("date"));
 
         if (allParams.isEmpty()) {
             return ResponseEntity.ok(todoService.getAllTodo());
