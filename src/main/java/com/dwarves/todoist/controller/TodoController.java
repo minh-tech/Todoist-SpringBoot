@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("api/todo")
 @RestController
@@ -25,18 +26,31 @@ public class TodoController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllTodo() {
-        return ResponseEntity.ok(todoService.getAllTodo());
+    public ResponseEntity<?> getTodoList(@RequestParam Map<String, String> allParams) {
+        System.out.println("Parameters are " + allParams.entrySet());
+        System.out.println("Parameters are " + allParams.isEmpty());
+        System.out.println("Parameters are " + allParams.get("date"));
+
+        if (allParams.isEmpty()) {
+            return ResponseEntity.ok(todoService.getAllTodo());
+        }
+
+        List<Todo> result = todoService.getTodoByParams(allParams);
+        if (result == null) {
+            return ResponseEntity.badRequest().body(Constant.PARAMS_INVALID);
+        }
+
+        return ResponseEntity.ok(result);
     }
 
-    @PostMapping(path = "/add")
+    @PostMapping
     public ResponseEntity<?> addTodo(@Valid @NonNull @RequestBody Todo todo) {
 
         todoService.addTodo(todo);
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
-    @PostMapping(path = "/edit")
+    @PutMapping
     public ResponseEntity<?> editTodoById(@Valid @NonNull @RequestBody Todo todo) {
 
         // Check a todoID is valid
@@ -52,16 +66,5 @@ public class TodoController {
 
         todoService.editTodoById(todo);
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
-    }
-
-    @GetMapping(path = "/{date}")
-    public ResponseEntity<?> getTodoByDate(@PathVariable("date")String dateStr) {
-        Date date = Utils.convertStringToDate(dateStr, Constant.PATTERN);
-
-        // Check Date is valid
-        if (date == null) {
-            return ResponseEntity.badRequest().body(Constant.DATE_INVALID);
-        }
-        return ResponseEntity.ok(todoService.getTodoByDate(date));
     }
 }

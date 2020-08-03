@@ -70,7 +70,12 @@ public class TaskController {
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 
-    @PostMapping(path = "/done")
+    @GetMapping
+    public ResponseEntity<?> getAllAssignments() {
+        return ResponseEntity.ok(taskService.getAllAssignments());
+    }
+
+    @PatchMapping
     public ResponseEntity<?> doneTodo(@NonNull @RequestBody Map<String, Object> json) {
         int userIdJson = 0;
         int todoIdJson = 0;
@@ -108,10 +113,5 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.ASSIGNMENT_NOT_FOUND);
         }
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
-    }
-
-    @GetMapping
-    public ResponseEntity<?> getAllAssignments() {
-        return ResponseEntity.ok(taskService.getAllAssignments());
     }
 }

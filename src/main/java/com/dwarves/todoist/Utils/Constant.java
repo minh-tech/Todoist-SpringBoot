@@ -15,8 +15,9 @@ public class Constant {
     public final static String USERIDS_INVALID = "One of user Ids is invalid.";
     public final static String TODO_INVALID = "A todo Id is invalid.";
     public final static String USER_INVALID = "A user Id is invalid.";
-    public final static String DATE_INVALID = "Date is invalid.";
     public final static String TODO_NOT_FOUND = "A todo not found.";
     public final static String USERS_NOT_FOUND = "One of users not found.";
     public final static String USER_NOT_FOUND = "A user not found.";
+    public final static String PARAMS_INVALID = "Parameters invalid.";
+
 }
