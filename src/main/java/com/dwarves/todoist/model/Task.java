@@ -14,17 +14,21 @@ public class Task {
 
     @NotNull
     @Min(value = 1)
-    private int userId;
+    private int assigneeId;
+
+    private String comment;
 
     @NotNull
-    private boolean complete;
+    private boolean isComplete;
 
     public Task(@JsonProperty(Constant.TODOID) int todoId,
-                @JsonProperty(Constant.USERID)int userId,
-                @JsonProperty(Constant.COMPLETE) boolean complete) {
+                @JsonProperty(Constant.ASSIGNEE_ID) int assigneeId,
+                @JsonProperty(Constant.COMMENT) String comment,
+                @JsonProperty(Constant.IS_COMPLETE) boolean isComplete) {
         this.todoId = todoId;
-        this.userId = userId;
-        this.complete = complete;
+        this.assigneeId = assigneeId;
+        this.comment = comment;
+        this.isComplete = isComplete;
     }
 
     public int getTodoId() {
@@ -35,19 +39,27 @@ public class Task {
         this.todoId = todoId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getAssigneeId() {
+        return assigneeId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setAssigneeId(int assigneeId) {
+        this.assigneeId = assigneeId;
     }
 
     public boolean isComplete() {
-        return complete;
+        return isComplete;
     }
 
     public void setComplete(boolean complete) {
-        this.complete = complete;
+        isComplete = complete;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

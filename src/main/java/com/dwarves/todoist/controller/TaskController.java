@@ -35,7 +35,7 @@ public class TaskController {
         int todoIdJson = 0;
 
         try {
-            userIdsJson = (List<Integer>) json.get(Constant.USERID_LIST);
+            userIdsJson = (List<Integer>) json.get(Constant.ASSIGNEE_IDS);
             todoIdJson = (int) json.get(Constant.TODOID);
 
             // Check a todoID is valid
@@ -81,7 +81,7 @@ public class TaskController {
         int todoIdJson = 0;
 
         try {
-            userIdJson = (int) json.get(Constant.USERID);
+            userIdJson = (int) json.get(Constant.ASSIGNEE_ID);
             todoIdJson = (int) json.get(Constant.TODOID);
         } catch (NullPointerException e) {
             return ResponseEntity.badRequest().body(Constant.JSON_INCORRECT);

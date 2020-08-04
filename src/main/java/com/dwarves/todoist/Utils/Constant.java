@@ -5,9 +5,8 @@ public class Constant {
     public final static String TODOID = "todoId";
     public final static String CONTENT = "content";
     public final static String COMPLETE_DATE = "complete_date";
-    public final static String COMPLETE = "complete";
+    public final static String IS_COMPLETE = "isComplete";
     public final static String USERID = "userId";
-    public final static String USERID_LIST = "userId_list";
     public final static String USERNAME = "username";
     public final static String JSON_INCORRECT = "Json format is incorrect.";
     public final static String ASSIGNMENT_DUPLICATED = "Assignments are duplicated.";
@@ -19,5 +18,10 @@ public class Constant {
     public final static String USERS_NOT_FOUND = "One of users not found.";
     public final static String USER_NOT_FOUND = "A user not found.";
     public final static String PARAMS_INVALID = "Parameters invalid.";
+    public final static String ASSIGNER_ID = "assignerId";
+    public final static String ASSIGNEE_ID = "assigneeId";
+    public final static String ASSIGNEE_IDS = "assigneeIds";
+    public final static String STATUS = "status";
+    public final static String COMMENT = "comment";
 
 }
