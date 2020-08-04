@@ -28,7 +28,9 @@ public class TodoController {
     public ResponseEntity<?> getTodoList(@RequestParam Map<String, String> allParams) {
 
         List<Todo> result = todoService.getTodoByParams(allParams);
-
+        if (result == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Constant.JSON_INCORRECT);
+        }
         return ResponseEntity.ok(result);
     }
 
@@ -41,7 +43,13 @@ public class TodoController {
 
     @PutMapping
     public ResponseEntity<?> editTodoById(@NonNull @RequestBody Map<String, String> todo) {
-        int todoId = Integer.parseInt(todo.get("todoId"));
+        int todoId;
+
+        try {
+            todoId = Integer.parseInt(todo.get("todoId"));
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().body(Constant.TODO_INVALID);
+        }
         // Check a todoID is valid
         if (!Utils.isIdValid(todoId)) {
             return ResponseEntity.badRequest().body(Constant.TODO_INVALID);
@@ -53,7 +61,10 @@ public class TodoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.TODO_NOT_FOUND);
         }
 
-        todoService.editTodoById(todo);
+        if (todoService.editTodoById(todo) == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(Constant.JSON_INCORRECT);
+        }
+
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 }

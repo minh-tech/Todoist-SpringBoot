@@ -23,7 +23,8 @@ public class Constant {
     public final static String ASSIGNEE_IDS = "assigneeIds";
     public final static String STATUS = "status";
     public final static String COMMENT = "comment";
-
+    public final static String ID = "Id";
+    public final static String DATE = "date";
     public final static String OPEN = "open";
     public final static String DONE = "done";
     public final static String LATE = "late";

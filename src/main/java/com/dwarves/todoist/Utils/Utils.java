@@ -1,7 +1,5 @@
 package com.dwarves.todoist.Utils;
 
-import org.springframework.http.ResponseEntity;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,9 +51,48 @@ public class Utils {
         return false;
     }
 
-    public static void appendIfEndBy(StringBuilder strBuilder, String appendStr, String endStr) {
-        if (strBuilder.lastIndexOf(endStr) != (strBuilder.length()-6)) {
+    /**
+     *  Used for appending sql query if the query not end by a keyword
+     * @param strBuilder
+     * @param appendStr
+     * @param endStr
+     */
+    public static void appendIfNotEndBy(StringBuilder strBuilder, String appendStr, String endStr) {
+        if (strBuilder.lastIndexOf(endStr) != (strBuilder.length()-endStr.length())) {
             strBuilder.append(appendStr);
         }
+    }
+
+    /**
+     * Add variables to an object list and craft sql query for executing
+     *
+     * @param obj
+     * @param map
+     * @param key
+     * @param sqlBuilder
+     * @param appStr
+     * @param strings
+     * @return
+     */
+    public static int craftSqlQuery(List<Object> obj, Map<String, String> map, String key, StringBuilder sqlBuilder, String appStr, String... strings) {
+        if (Utils.isKeyValid(map, key)) {
+            if (strings.length == 2) {
+                Utils.appendIfNotEndBy(sqlBuilder, strings[0], strings[1]);
+            }
+
+            sqlBuilder.append(appStr);
+            if (key.contains(Constant.DATE)) {
+                Date date = Utils.convertStringToDate(
+                        map.get(key),
+                        Constant.PATTERN);
+                obj.add(date);
+            } else if (key.contains(Constant.ID)) {
+                obj.add(Integer.parseInt(map.get(key)));
+            } else {
+                obj.add(map.get(key));
+            }
+            return 1;
+        }
+        return 0;
     }
 }
