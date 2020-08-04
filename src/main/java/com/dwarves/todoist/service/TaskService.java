@@ -20,23 +20,22 @@ public class TaskService {
 
     /**
      * Assign multiple users into one todo
-     * @param userId_list
+     * @param assignee_Ids
      * @param todoId
      * @return
      * @throws DuplicateKeyException
      */
-    public int assignUsers(List<Integer> userId_list, int todoId) throws DuplicateKeyException {
-        return taskDao.assignUsers(userId_list, todoId);
+    public int assignUsers(List<Integer> assignee_Ids, int todoId) throws DuplicateKeyException {
+        return taskDao.assignUsers(assignee_Ids, todoId);
     }
 
     /**
      * Complete a todo
-     * @param userId
-     * @param todoId
+     * @param task
      * @return
      */
-    public int doneTodo(int userId, int todoId) {
-        return taskDao.doneTodo(userId, todoId);
+    public int updateAssignment(Task task) {
+        return taskDao.updateAssignment(task);
     }
 
     /**

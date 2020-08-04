@@ -18,7 +18,6 @@ public class Task {
 
     private String comment;
 
-    @NotNull
     private boolean isComplete;
 
     public Task(@JsonProperty(Constant.TODOID) int todoId,

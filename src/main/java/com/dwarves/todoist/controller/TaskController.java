@@ -2,6 +2,7 @@ package com.dwarves.todoist.controller;
 
 import com.dwarves.todoist.Utils.Constant;
 import com.dwarves.todoist.Utils.Utils;
+import com.dwarves.todoist.model.Task;
 import com.dwarves.todoist.service.TaskService;
 import com.dwarves.todoist.service.TodoService;
 import com.dwarves.todoist.service.UserService;
@@ -76,40 +77,42 @@ public class TaskController {
     }
 
     @PatchMapping
-    public ResponseEntity<?> doneTodo(@NonNull @RequestBody Map<String, Object> json) {
-        int userIdJson = 0;
-        int todoIdJson = 0;
+    public ResponseEntity<?> updateAssignment(@NonNull @RequestBody Task task) {
+//        int userIdJson = 0;
+//        int todoIdJson = 0;
+//
+//        try {
+//            userIdJson = (int) json.get(Constant.ASSIGNEE_ID);
+//            todoIdJson = (int) json.get(Constant.TODOID);
+//        } catch (NullPointerException e) {
+//            return ResponseEntity.badRequest().body(Constant.JSON_INCORRECT);
+//        }
+//
+//        String comment = (String) json.get(Constant.COMMENT);
 
-        try {
-            userIdJson = (int) json.get(Constant.ASSIGNEE_ID);
-            todoIdJson = (int) json.get(Constant.TODOID);
-        } catch (NullPointerException e) {
-            return ResponseEntity.badRequest().body(Constant.JSON_INCORRECT);
-        }
-
-        // Check a userID is valid
-        if (!Utils.isIdValid(userIdJson)) {
+        // Check a assigneeID is valid
+        if (!Utils.isIdValid(task.getAssigneeId())) {
             return ResponseEntity.badRequest().body(Constant.USER_INVALID);
         }
 
         // Check a userID exists in database
         List<Integer> userIdsDatabase = userService.getAllUserIds();
-        if (!Utils.isIdExisted(userIdsDatabase, userIdJson)) {
+        if (!Utils.isIdExisted(userIdsDatabase, task.getAssigneeId())) {
             return ResponseEntity.badRequest().body(Constant.USER_NOT_FOUND);
         }
 
         // Check a todoID is valid
-        if (!Utils.isIdValid(todoIdJson)) {
+        if (!Utils.isIdValid(task.getTodoId())) {
             return ResponseEntity.badRequest().body(Constant.TODO_INVALID);
         }
 
         // Check a todoID exists in database
         List<Integer> todoIdsDatabase = todoService.getAllTodoIds();
-        if (!Utils.isIdExisted(todoIdsDatabase, todoIdJson)) {
+        if (!Utils.isIdExisted(todoIdsDatabase, task.getTodoId())) {
             return ResponseEntity.badRequest().body(Constant.TODO_NOT_FOUND);
         }
 
-        if (taskService.doneTodo(userIdJson, todoIdJson) == 0) {
+        if (taskService.updateAssignment(task) == 0) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.ASSIGNMENT_NOT_FOUND);
         }
         return ResponseEntity.ok(HttpStatus.ACCEPTED);

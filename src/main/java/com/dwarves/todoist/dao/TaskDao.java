@@ -9,20 +9,19 @@ public interface TaskDao {
 
     /**
      * Assign multiple users into one todo
-     * @param userId_list
+     * @param assignee_Ids
      * @param todo
      * @return
      * @throws DuplicateKeyException
      */
-    int assignUsers(List<Integer> userId_list, int todo) throws DuplicateKeyException;
+    int assignUsers(List<Integer> assignee_Ids, int todo) throws DuplicateKeyException;
 
     /**
      * Complete a todo
-     * @param todoId
-     * @param userId
+     * @param task
      * @return
      */
-    int doneTodo(int todoId, int userId);
+    int updateAssignment(Task task);
 
     /**
      * Get a list of assignments

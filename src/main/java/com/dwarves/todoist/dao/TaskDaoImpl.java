@@ -22,7 +22,7 @@ public class TaskDaoImpl implements TaskDao {
 
     @Override
     public int assignUsers(List<Integer> assignee_Ids, int todoId)  throws DuplicateKeyException {
-        final String sql = "INSERT INTO task_table (\"todoId\", \"userId\", complete) VALUES (?, ?, ?)";
+        final String sql = "INSERT INTO task_table (\"todoId\", \"assigneeId\", \"isComplete\") VALUES (?, ?, ?)";
 
         jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
             @Override
@@ -40,9 +40,14 @@ public class TaskDaoImpl implements TaskDao {
     }
 
     @Override
-    public int doneTodo(int userId, int todoId) {
-        final String sql = "UPDATE task_table SET complete = true WHERE \"todoId\" = ? AND \"userId\" = ?";
-        return jdbcTemplate.update(sql, todoId, userId);
+    public int updateAssignment(Task task) {
+        final String sql = "UPDATE task_table SET comment = ?, \"isComplete\" = ? WHERE \"todoId\" = ? AND \"assigneeId\" = ?";
+        return jdbcTemplate.update(
+                sql,
+                task.getComment(),
+                task.isComplete(),
+                task.getTodoId(),
+                task.getAssigneeId());
     }
 
     @Override
