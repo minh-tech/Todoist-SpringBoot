@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public enum TodoStatus {
     OPEN(0, "open"),
-    COMP(1, "complete"),
+    DONE(1, "done"),
     LATE(2, "late"),
     CLOSE(3, "close");
 
@@ -29,8 +29,7 @@ public enum TodoStatus {
         TodoStatus[] statuses = values();
         int length = statuses.length;
 
-        for(int i = 0; i < length; ++i) {
-            TodoStatus status = statuses[i];
+        for (TodoStatus status : statuses) {
             if (status.statusPhrase.equalsIgnoreCase(status_Str)) {
                 return status;
             }
