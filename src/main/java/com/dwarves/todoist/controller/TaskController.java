@@ -78,17 +78,6 @@ public class TaskController {
 
     @PatchMapping
     public ResponseEntity<?> updateAssignment(@NonNull @RequestBody Task task) {
-//        int userIdJson = 0;
-//        int todoIdJson = 0;
-//
-//        try {
-//            userIdJson = (int) json.get(Constant.ASSIGNEE_ID);
-//            todoIdJson = (int) json.get(Constant.TODOID);
-//        } catch (NullPointerException e) {
-//            return ResponseEntity.badRequest().body(Constant.JSON_INCORRECT);
-//        }
-//
-//        String comment = (String) json.get(Constant.COMMENT);
 
         // Check a assigneeID is valid
         if (!Utils.isIdValid(task.getAssigneeId())) {

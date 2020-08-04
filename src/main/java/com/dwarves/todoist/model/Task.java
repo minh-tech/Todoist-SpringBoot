@@ -26,6 +26,11 @@ public class Task {
         this.comment = comment;
     }
 
+    public Task(int assigneeId, String comment) {
+        this.assigneeId = assigneeId;
+        this.comment = comment;
+    }
+
     public int getTodoId() {
         return todoId;
     }

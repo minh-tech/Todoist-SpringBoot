@@ -5,7 +5,6 @@ public class Constant {
     public final static String TODOID = "todoId";
     public final static String CONTENT = "content";
     public final static String COMPLETE_DATE = "complete_date";
-    public final static String IS_COMPLETE = "isComplete";
     public final static String USERID = "userId";
     public final static String USERNAME = "username";
     public final static String JSON_INCORRECT = "Json format is incorrect.";
@@ -17,7 +16,6 @@ public class Constant {
     public final static String TODO_NOT_FOUND = "A todo not found.";
     public final static String USERS_NOT_FOUND = "One of users not found.";
     public final static String USER_NOT_FOUND = "A user not found.";
-    public final static String PARAMS_INVALID = "Parameters invalid.";
     public final static String ASSIGNER_ID = "assignerId";
     public final static String ASSIGNEE_ID = "assigneeId";
     public final static String ASSIGNEE_IDS = "assigneeIds";
@@ -25,9 +23,5 @@ public class Constant {
     public final static String COMMENT = "comment";
     public final static String ID = "Id";
     public final static String DATE = "date";
-    public final static String OPEN = "open";
-    public final static String DONE = "done";
-    public final static String LATE = "late";
-    public final static String CLOSE = "close";
-
+    public final static String TASKS = "tasks";
 }

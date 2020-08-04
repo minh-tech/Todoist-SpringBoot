@@ -50,7 +50,7 @@ public class TaskDaoImpl implements TaskDao {
 
     @Override
     public List<Task> getAllAssignments() {
-        final String sql = "SELECT * FROM task_table";
+        final String sql = "SELECT * FROM task_table ORDER BY \"todoId\", \"assigneeId\"";
         return jdbcTemplate.query(sql, ((resultSet, i) -> new Task(
                 resultSet.getInt(Constant.TODOID),
                 resultSet.getInt(Constant.ASSIGNEE_ID),
