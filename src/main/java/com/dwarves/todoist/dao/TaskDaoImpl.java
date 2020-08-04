@@ -22,14 +22,13 @@ public class TaskDaoImpl implements TaskDao {
 
     @Override
     public int assignUsers(List<Integer> assignee_Ids, int todoId)  throws DuplicateKeyException {
-        final String sql = "INSERT INTO task_table (\"todoId\", \"assigneeId\", \"isComplete\") VALUES (?, ?, ?)";
+        final String sql = "INSERT INTO task_table (\"todoId\", \"assigneeId\") VALUES (?, ?)";
 
         jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
                 preparedStatement.setInt(1, todoId);
                 preparedStatement.setInt(2, assignee_Ids.get(i));
-                preparedStatement.setBoolean(3, false);
             }
             @Override
             public int getBatchSize() {
@@ -41,11 +40,10 @@ public class TaskDaoImpl implements TaskDao {
 
     @Override
     public int updateAssignment(Task task) {
-        final String sql = "UPDATE task_table SET comment = ?, \"isComplete\" = ? WHERE \"todoId\" = ? AND \"assigneeId\" = ?";
+        final String sql = "UPDATE task_table SET comment = ? WHERE \"todoId\" = ? AND \"assigneeId\" = ?";
         return jdbcTemplate.update(
                 sql,
                 task.getComment(),
-                task.isComplete(),
                 task.getTodoId(),
                 task.getAssigneeId());
     }
@@ -56,8 +54,7 @@ public class TaskDaoImpl implements TaskDao {
         return jdbcTemplate.query(sql, ((resultSet, i) -> new Task(
                 resultSet.getInt(Constant.TODOID),
                 resultSet.getInt(Constant.ASSIGNEE_ID),
-                resultSet.getString(Constant.COMMENT),
-                resultSet.getBoolean(Constant.IS_COMPLETE)
+                resultSet.getString(Constant.COMMENT)
         )));
     }
 }

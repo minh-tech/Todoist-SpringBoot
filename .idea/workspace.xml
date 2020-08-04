@@ -22,24 +22,18 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="957d5b04-3ae1-4c40-ae7a-96001d688bd2" name="Default Changelist" comment="Update API assign users, done todo">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/UserDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TaskDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TodoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/TodoDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TodoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/service/TodoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dwarves/todoist/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__ddl.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,22 +176,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="651" y="263" width="666" height="580" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1595888097123" />
-    <state width="1807" height="213" key="GridCell.Tab.0.bottom" timestamp="1595962556730">
+    <state width="1340" height="286" key="GridCell.Tab.0.bottom" timestamp="1596564042529">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="213" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556730" />
-    <state width="1807" height="213" key="GridCell.Tab.0.center" timestamp="1595962556726">
+    <state width="1340" height="286" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1596564042529" />
+    <state width="1340" height="286" key="GridCell.Tab.0.center" timestamp="1596564042526">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="213" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556726" />
-    <state width="1807" height="213" key="GridCell.Tab.0.left" timestamp="1595962556724">
+    <state width="1340" height="286" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1596564042526" />
+    <state width="1340" height="286" key="GridCell.Tab.0.left" timestamp="1596564042526">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="213" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556724" />
-    <state width="1807" height="213" key="GridCell.Tab.0.right" timestamp="1595962556729">
+    <state width="1340" height="286" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1596564042526" />
+    <state width="1340" height="286" key="GridCell.Tab.0.right" timestamp="1596564042528">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="213" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595962556729" />
+    <state width="1340" height="286" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1596564042528" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1595951916838">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

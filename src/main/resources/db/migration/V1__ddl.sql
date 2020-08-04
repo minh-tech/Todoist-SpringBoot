@@ -20,6 +20,5 @@ CREATE TABLE task_table
     "todoId" integer NOT NULL,
     "assigneeId" integer NOT NULL,
     comment text,
-    "isComplete" boolean NOT NULL,
     PRIMARY KEY ("todoId", "assigneeId")
 );
