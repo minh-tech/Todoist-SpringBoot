@@ -48,16 +48,16 @@ public class TodoController {
     }
 
     @PutMapping
-    public ResponseEntity<?> editTodoById(@Valid @NonNull @RequestBody Todo todo) {
-
+    public ResponseEntity<?> editTodoById(@NonNull @RequestBody Map<String, Object> todo) {
+        int todoId = (int) todo.get("todoId");
         // Check a todoID is valid
-        if (!Utils.isIdValid(todo.getTodoId())) {
+        if (!Utils.isIdValid(todoId)) {
             return ResponseEntity.badRequest().body(Constant.TODO_INVALID);
         }
 
         // Check a todoID exist in database
         List<Integer> todoIds = todoService.getAllTodoIds();
-        if (!Utils.isIdExisted(todoIds, todo.getTodoId())) {
+        if (!Utils.isIdExisted(todoIds, todoId)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Constant.TODO_NOT_FOUND);
         }
 

@@ -4,6 +4,7 @@ import com.dwarves.todoist.model.Todo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public interface TodoDao {
 
@@ -25,7 +26,7 @@ public interface TodoDao {
      * @param todo
      * @return
      */
-    int editTodoById(Todo todo);
+    int editTodoById(Map<String, Object> todo);
 
     /**
      * Group todos by date

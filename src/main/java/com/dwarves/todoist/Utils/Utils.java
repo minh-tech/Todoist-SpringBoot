@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class Utils {
     public static Date convertStringToDate(String dateStr, String pattern) {
@@ -42,5 +43,13 @@ public class Utils {
             return false;
         }
         return true;
+    }
+
+    public static boolean isKeyValid(Map<String, Object> map, String key) {
+        if (map.containsKey(key)
+                && !map.get(key).toString().isBlank()) {
+            return true;
+        }
+        return false;
     }
 }

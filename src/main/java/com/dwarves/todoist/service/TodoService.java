@@ -29,7 +29,9 @@ public class TodoService {
         return todoDao.addTodo(todo);
     }
 
-    public int editTodoById(Todo todo) {
+    public int editTodoById(Map<String, Object> todo) {
+
+
         return todoDao.editTodoById(todo);
     }
 
