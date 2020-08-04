@@ -11,7 +11,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -28,14 +27,7 @@ public class TodoController {
     @GetMapping
     public ResponseEntity<?> getTodoList(@RequestParam Map<String, String> allParams) {
 
-        if (allParams.isEmpty()) {
-            return ResponseEntity.ok(todoService.getAllTodo());
-        }
-
         List<Todo> result = todoService.getTodoByParams(allParams);
-        if (result == null) {
-            return ResponseEntity.badRequest().body(Constant.PARAMS_INVALID);
-        }
 
         return ResponseEntity.ok(result);
     }
@@ -48,8 +40,8 @@ public class TodoController {
     }
 
     @PutMapping
-    public ResponseEntity<?> editTodoById(@NonNull @RequestBody Map<String, Object> todo) {
-        int todoId = (int) todo.get("todoId");
+    public ResponseEntity<?> editTodoById(@NonNull @RequestBody Map<String, String> todo) {
+        int todoId = Integer.parseInt(todo.get("todoId"));
         // Check a todoID is valid
         if (!Utils.isIdValid(todoId)) {
             return ResponseEntity.badRequest().body(Constant.TODO_INVALID);

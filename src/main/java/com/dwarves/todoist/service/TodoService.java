@@ -21,33 +21,18 @@ public class TodoService {
         this.todoDao = todoDao;
     }
 
-    public List<Todo> getAllTodo() {
-        return todoDao.getAllTodo();
-    }
-
     public int addTodo(Todo todo) {
         return todoDao.addTodo(todo);
     }
 
-    public int editTodoById(Map<String, Object> todo) {
-
+    public int editTodoById(Map<String, String> todo) {
 
         return todoDao.editTodoById(todo);
     }
 
     public List<Todo> getTodoByParams(Map<String, String> allParams) {
 
-        Date date = Utils.convertStringToDate(
-                    allParams.get(Constant.COMPLETE_DATE),
-                    Constant.PATTERN
-        );
-
-        // Check Date is valid
-        if (date == null) {
-            return null;
-        }
-
-        return todoDao.getTodoByDate(date);
+        return todoDao.getTodoByParams(allParams);
     }
 
     public List<Integer> getAllTodoIds() {

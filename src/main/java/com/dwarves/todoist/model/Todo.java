@@ -1,7 +1,7 @@
 package com.dwarves.todoist.model;
 
 import com.dwarves.todoist.Utils.Constant;
-import com.dwarves.todoist.Utils.TodoStatus;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotNull;
@@ -19,8 +19,9 @@ public class Todo {
     @NotNull
     private int assignerId;
 
-    private TodoStatus status;
+    private String status;
 
+    @JsonCreator
     public Todo(@JsonProperty(Constant.TODOID) int todoId,
                 @JsonProperty(Constant.CONTENT) String content,
                 @JsonProperty(Constant.COMPLETE_DATE) String complete_date,
@@ -30,7 +31,7 @@ public class Todo {
         this.content = content;
         this.complete_date = complete_date;
         this.assignerId = assignerId;
-        this.status = TodoStatus.resolve(status);
+        this.status = status;
     }
 
     public int getTodoId() {
@@ -62,10 +63,10 @@ public class Todo {
     }
 
     public String getStatus() {
-        return status.getStatusPhrase();
+        return status;
     }
 
     public void setStatus(String status) {
-        this.status = TodoStatus.resolve(status);
+        this.status = status;
     }
 }

@@ -45,11 +45,17 @@ public class Utils {
         return true;
     }
 
-    public static boolean isKeyValid(Map<String, Object> map, String key) {
+    public static boolean isKeyValid(Map<String, String> map, String key) {
         if (map.containsKey(key)
-                && !map.get(key).toString().isBlank()) {
+                && !map.get(key).isBlank()) {
             return true;
         }
         return false;
+    }
+
+    public static void appendIfEndBy(StringBuilder strBuilder, String appendStr, String endStr) {
+        if (strBuilder.lastIndexOf(endStr) != (strBuilder.length()-6)) {
+            strBuilder.append(appendStr);
+        }
     }
 }

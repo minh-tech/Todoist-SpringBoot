@@ -9,12 +9,6 @@ import java.util.Map;
 public interface TodoDao {
 
     /**
-     * Get a list of todos
-     * @return
-     */
-    List<Todo> getAllTodo();
-
-    /**
      * Create a new todo
      * @param todo
      * @return
@@ -26,14 +20,14 @@ public interface TodoDao {
      * @param todo
      * @return
      */
-    int editTodoById(Map<String, Object> todo);
+    int editTodoById(Map<String, String> todo);
 
     /**
-     * Group todos by date
-     * @param date
+     * Get todos by parameters
+     * @param allParams
      * @return
      */
-    List<Todo> getTodoByDate(Date date);
+    List<Todo> getTodoByParams(Map<String, String> allParams);
 
     /**
      * Get a list of todoIds

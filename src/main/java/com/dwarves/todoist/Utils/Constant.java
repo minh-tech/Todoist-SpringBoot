@@ -24,4 +24,9 @@ public class Constant {
     public final static String STATUS = "status";
     public final static String COMMENT = "comment";
 
+    public final static String OPEN = "open";
+    public final static String DONE = "done";
+    public final static String LATE = "late";
+    public final static String CLOSE = "close";
+
 }

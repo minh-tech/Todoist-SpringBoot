@@ -1,7 +1,6 @@
 package com.dwarves.todoist.dao;
 
 import com.dwarves.todoist.Utils.Constant;
-import com.dwarves.todoist.Utils.TodoStatus;
 import com.dwarves.todoist.Utils.Utils;
 import com.dwarves.todoist.model.Todo;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,9 +22,44 @@ public class TodoDaoImpl implements TodoDao{
     }
 
     @Override
-    public List<Todo> getAllTodo() {
-        final String sql = "SELECT * FROM todo_table";
-        return jdbcTemplate.query(sql, ((resultSet, i) -> new Todo(
+    public List<Todo> getTodoByParams(Map<String, String> allParams) {
+
+        StringBuilder sqlBuilder = new StringBuilder("SELECT * FROM todo_table ");
+        List<Object> obj = new ArrayList<>();
+
+        if (!allParams.isEmpty()) {
+            sqlBuilder.append("WHERE ");
+
+            if (Utils.isKeyValid(allParams, Constant.TODOID)) {
+                sqlBuilder.append("\"todoId\" = ? ");
+                obj.add(Integer.parseInt(allParams.get(Constant.TODOID)));
+            }
+
+            if (Utils.isKeyValid(allParams, Constant.COMPLETE_DATE)) {
+                Utils.appendIfEndBy(sqlBuilder, "AND ", "WHERE ");
+                sqlBuilder.append("complete_date = ? ");
+                Date date = Utils.convertStringToDate(
+                        allParams.get(Constant.COMPLETE_DATE).toString(),
+                        Constant.PATTERN);
+                obj.add(date);
+            }
+
+            if (Utils.isKeyValid(allParams, Constant.ASSIGNER_ID)) {
+                Utils.appendIfEndBy(sqlBuilder, "AND ", "WHERE ");
+                sqlBuilder.append("\"assignerId\" = ? ");
+                obj.add(Integer.parseInt(allParams.get(Constant.ASSIGNER_ID)));
+            }
+
+            if (Utils.isKeyValid(allParams, Constant.STATUS)) {
+                Utils.appendIfEndBy(sqlBuilder, "AND ", "WHERE ");
+                sqlBuilder.append("status = ? ");
+                obj.add(allParams.get(Constant.STATUS));
+            }
+        }
+
+        final String sql = sqlBuilder.toString();
+
+        return jdbcTemplate.query(sql, obj.toArray(), ((resultSet, i) -> new Todo(
                 resultSet.getInt(Constant.TODOID),
                 resultSet.getString(Constant.CONTENT),
                 Utils.convertDateToString(resultSet.getDate(Constant.COMPLETE_DATE), Constant.PATTERN),
@@ -43,12 +77,12 @@ public class TodoDaoImpl implements TodoDao{
                 todo.getContent(),
                 date,
                 todo.getAssignerId(),
-                TodoStatus.OPEN.getStatusPhrase()
+                todo.getStatus()
         );
     }
 
     @Override
-    public int editTodoById(Map<String, Object> todo) {
+    public int editTodoById(Map<String, String> todo) {
 
         StringBuilder sqlBuilder = new StringBuilder("UPDATE todo_table SET");
         List<Object> obj = new ArrayList<>();
@@ -90,19 +124,6 @@ public class TodoDaoImpl implements TodoDao{
                 obj.toArray(),
                 int_array
         );
-    }
-
-    @Override
-    public List<Todo> getTodoByDate(Date date) {
-        final String sql = "SELECT * FROM todo_table WHERE complete_date = ?";
-
-        return jdbcTemplate.query(sql, new Object[]{date}, ((resultSet, i) -> new Todo(
-                resultSet.getInt(Constant.TODOID),
-                resultSet.getString(Constant.CONTENT),
-                Utils.convertDateToString(resultSet.getDate(Constant.COMPLETE_DATE), Constant.PATTERN),
-                resultSet.getInt(Constant.ASSIGNER_ID),
-                resultSet.getString(Constant.STATUS)
-        )));
     }
 
     @Override
