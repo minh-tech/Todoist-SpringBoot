@@ -19,6 +19,6 @@ CREATE TABLE task_table
 (
     "todoId" integer NOT NULL,
     "assigneeId" integer NOT NULL,
-    comment text,
+    comment text DEFAULT 'TBD',
     PRIMARY KEY ("todoId", "assigneeId")
 );
