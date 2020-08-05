@@ -27,33 +27,53 @@ public class TaskService {
         return taskDao.updateAssignment(task);
     }
 
-    public List<Map<String, Object>> getAllAssignments() {
-        Deque<Task> tasks_deque = new ArrayDeque<>(taskDao.getAllAssignments());
+    public List<Object> getAllAssignments() {
 
-        Map<Integer, List<Task>> hashMap = new HashMap<>();
+        Map<Integer, List<Object>> hashMap = new HashMap<>();
+        TaskService.convertListToMap(
+                taskDao.getAllAssignments(),
+                hashMap,
+                Constant.ASSIGNEE_ID, Constant.COMMENT);
 
+        List<Object> res = new ArrayList<>();
+        TaskService.convertMapToList(hashMap, res);
+
+        return res;
+    }
+
+    private static void convertListToMap(
+            List<Task> list,
+            Map<Integer, List<Object>> hashMap,
+            String... strings) {
+
+        Deque<Task> tasks_deque = new ArrayDeque<>(list);
         while (!tasks_deque.isEmpty()) {
             Task t = tasks_deque.pop();
-            if (hashMap.containsKey(t.getTodoId())) {
-                hashMap.get(t.getTodoId()).add(new Task(t.getAssigneeId(), t.getComment()));
-            } else {
-                List<Task> lst = new ArrayList<>();
-                lst.add(new Task(t.getAssigneeId(), t.getComment()));
+
+            if (!hashMap.containsKey(t.getTodoId())) {
+                List<Object> lst = new ArrayList<>();
                 hashMap.put(t.getTodoId(), lst);
             }
-        }
 
-        List<Map<String, Object>> res = new ArrayList<>();
-        for (Map.Entry<Integer, List<Task>> mapElement : hashMap.entrySet()) {
+            Map<String, Object> map = new HashMap<>();
+            // TODO: Get Task properties by string so map can be put dynamically
+            map.put(strings[0], t.getAssigneeId());
+            map.put(strings[1], t.getComment());
+            hashMap.get(t.getTodoId()).add(map);
+        }
+    }
+
+    private static void convertMapToList(
+            Map<Integer, List<Object>> map,
+            List<Object> res) {
+        for (Map.Entry<Integer, List<Object>> mapElement : map.entrySet()) {
             int key = mapElement.getKey();
-            List<Task> value = mapElement.getValue();
+            List<Object> value = mapElement.getValue();
 
             Map<String, Object> hm = new HashMap<>();
             hm.put(Constant.TODOID, key);
             hm.put(Constant.TASKS, value);
             res.add(hm);
         }
-
-        return res;
     }
 }
