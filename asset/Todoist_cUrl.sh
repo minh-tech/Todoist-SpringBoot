@@ -1,21 +1,36 @@
 # Get a list of todos
 curl --location -w "\n" --request GET 'http://localhost:8080/api/todo'
 
+# Get a list of todos by date and user Id
+curl --location -w "\n" --request GET 'http://localhost:8080/api/todo?complete_date=2020-07-28&assignerId=1'
+
 # Create a todo
-curl --location -w "\n" --request POST 'http://localhost:8080/api/todo/add' \
+curl --location -w "\n" --request POST 'http://localhost:8080/api/todo' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "content": "Do exercise 2",
-    "complete_date": "2020-08-08"
+    "complete_date": "2020-09-09",
+    "assignerId": 3,
+    "status": "open"
 }'
 
 # Edit a todo
-curl --location -w "\n" --request POST 'http://localhost:8080/api/todo/edit' \
+curl --location -w "\n" --request PUT 'http://localhost:8080/api/todo' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "todoId": 1,
-    "content": "Do exercise 1",
-    "complete_date": "2020-07-30"
+    "todoId": 6,
+    "content": "Read a handbook",
+    "complete_date": "2020-09-05",
+    "status": "open"
+}'
+
+# Assigner changes status of a todo
+curl --location -w "\n" --request PUT 'http://localhost:8080/api/todo' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "todoId": 4,
+    "assignerId": 2,
+    "status": "done"
 }'
 
 # Get a list of users
@@ -25,30 +40,28 @@ curl --location -w "\n" --request GET 'http://localhost:8080/api/user'
 curl --location -w "\n" --request POST 'http://localhost:8080/api/task' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "userId_list": [
-        1, 2, 3
-    ],
-    "todoId": 1
+    "todoId": 5,
+    "assigneeIds": [
+        4, 5
+    ]
 }'
 
 # Get a list of the assignments
 curl --location -w "\n" --request GET 'http://localhost:8080/api/task'
 
-# Complete a todo
-curl --location -w "\n" --request POST 'http://localhost:8080/api/task/done' \
+# Assignee comments a todo
+curl --location -w "\n" --request PATCH 'http://localhost:8080/api/task' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "userId": 1,
-    "todoId": 1
+    "todoId": 5,
+    "assigneeId": 4,
+    "comment": "Planning"
 }'
 
-# Get a list of todos by date
-curl --location -w "\n" --request GET 'http://localhost:8080/api/todo/2020-07-28'
-
 # Add a new user
-curl --location -w "\n" --request POST 'http://localhost:8080/api/user/add' \
+curl --location -w "\n" --request POST 'http://localhost:8080/api/user' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "username": "Minh"
+    "username": "Minh5"
 }'
 
