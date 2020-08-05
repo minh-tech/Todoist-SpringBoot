@@ -32,63 +32,30 @@ $ ./asset/Todoist_cUrl.sh
 
 ## HTTP API:
 1. Get a list of todos
-   * Request HTTP GET: http://localhost:8080/api/todo
-   * Response: `200 OK + JSON`
+   * HTTP GET: http://localhost:8080/api/todo
 
-2. Get a list of todos by date
-   * Request HTTP GET: http://localhost:8080/api/todo/2020-07-28
-   * Response:
-~~~~
-      400 Bad Request + Message: "Date is invalid."
-      200 OK
-~~~~
+2. Get a list of todos by conditions
+   * HTTP GET: http://localhost:8080/api/todo?complete_date=2020-07-28&assignerId=1
+   
 3. Create a todo
-   * Request HTTP POST: http://localhost:8080/api/todo/add
-   * Response: `200 OK`
+   * HTTP POST: http://localhost:8080/api/todo
 
 4. Edit a todo
-   * Request HTTP POST: http://localhost:8080/api/todo/edit
-   * Response:
-~~~~
-      400 Bad Request + Message: "A todo Id is invalid."
-      404 Not Found + Message: "A todo not found."
-      200 OK
-~~~~
+   * HTTP PUT: http://localhost:8080/api/todo
+
 5. Get a list of users
-   * Request HTTP GET: http://localhost:8080/api/user
-   * Response: `200 OK + JSON`
+   * HTTP GET: http://localhost:8080/api/user
 
 6. Add a new user
-   * Request HTTP POST: http://localhost:8080/api/user/add
-   * Response: `200 OK`
+   * HTTP POST: http://localhost:8080/api/user
 
 7. Assign multiple users into 1 todo
-   * Request HTTP POST: http://localhost:8080/api/task
-   * Response:
-~~~~
-      400 Bad Request + Message: "A todo Id is invalid."
-      404 Not Found + Message: "A todo not found."
-      400 Bad Request + Message: "One of user Ids is invalid."
-      404 Not Found + Message: "One of users not found."
-      400 Bad Request + Message: "Json format is incorrect."
-      400 Bad Request + Message: "Assignments are duplicated."
-      200 OK
-~~~~
-8. Get a list of the assignments
-   * Request HTTP GET: http://localhost:8080/api/task
-   * Response: `200 OK + JSON`
+   * HTTP POST: http://localhost:8080/api/task
 
-9. Complete a todo
-   * Request HTTP POST: http://localhost:8080/api/task/done
-   * Response:
-~~~~
-      400 Bad Request + Message: "Json format is incorrect."
-      400 Bad Request + Message: "A user Id is invalid."
-      404 Not Found + Message: "A user not found."
-      400 Bad Request + Message: "A todo Id is invalid."
-      404 Not Found + Message: "A todo not found."
-      404 Not Found + Message: "Cannot found the assignment."
-      200 OK
-~~~~
+8. Get a list of the assignments
+   * HTTP GET: http://localhost:8080/api/task
+
+9. Assignee comments a todo
+   * HTTP PATCH: http://localhost:8080/api/task
 
 Thanks
