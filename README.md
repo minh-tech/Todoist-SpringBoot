@@ -3,7 +3,7 @@
 * Framework : Spring Boot
 * Database  : PostgreSQL
 * cUrl      : asset/Todoist_cUrl.sh
-* jar       : target/todoist-0.0.1-SNAPSHOT.jar
+* jar       : target/todoist-0.0.2-SNAPSHOT.jar
 * ERD       :
 
 ![Alt](https://github.com/minh-tech/todoist/blob/master/asset/Todolist_ERD.jpg "Title")
@@ -22,8 +22,8 @@
 ~~~~
 2. Run Application
 ~~~~
-# Run todoist-0.0.1-SNAPSHOT.jar:
-$ java -jar target/todoist-0.0.1-SNAPSHOT.jar 
+# Run .jar file:
+$ java -jar target/todoist-0.0.2-SNAPSHOT.jar
 
 # Grant permission and run asset/Todoist_cUrl.sh
 $ chmod +x asset/Todoist_cUrl.sh
