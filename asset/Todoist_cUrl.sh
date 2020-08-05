@@ -50,12 +50,12 @@ curl --location -w "\n" --request POST 'http://localhost:8080/api/task' \
 curl --location -w "\n" --request GET 'http://localhost:8080/api/task'
 
 # Assignee comments a todo
-curl --location -w "\n" --request PATCH 'http://localhost:8080/api/task' \
+curl --location --request PATCH 'http://localhost:8080/api/task' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "todoId": 5,
+    "todoId": 4,
     "assigneeId": 4,
-    "comment": "Planning"
+    "comment": "Still Planning"
 }'
 
 # Add a new user
